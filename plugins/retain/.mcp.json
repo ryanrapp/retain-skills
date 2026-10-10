@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "retain": {
+      "type": "http",
+      "url": "https://retainapp.ai/api/private/mcp"
+    }
+  }
+}

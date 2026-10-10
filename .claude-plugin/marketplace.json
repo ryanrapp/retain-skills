@@ -1,0 +1,13 @@
+{
+  "name": "retain",
+  "owner": { "name": "Retain" },
+  "metadata": { "description": "Retain's Claude Code plugin for searching and capturing your meetings, tasks and threads." },
+  "plugins": [
+    {
+      "name": "retain",
+      "source": "./plugins/retain",
+      "description": "Search, read and capture your Retain transcripts, tasks and threads from Claude.",
+      "author": { "name": "Retain" }
+    }
+  ]
+}

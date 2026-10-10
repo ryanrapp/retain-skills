@@ -1,0 +1,10 @@
+interface:
+  display_name: "Retain: search"
+  short_description: "Look up what was said, decided or is outstanding in your Retain"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "retain"
+      description: "The Retain MCP server"
+      transport: "streamable_http"
+      url: "https://retainapp.ai/api/private/mcp"

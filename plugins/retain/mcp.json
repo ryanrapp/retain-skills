@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "retain": {
+      "type": "streamable-http",
+      "url": "https://retainapp.ai/api/private/mcp"
+    }
+  }
+}

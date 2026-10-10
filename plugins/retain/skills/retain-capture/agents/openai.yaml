@@ -1,0 +1,10 @@
+interface:
+  display_name: "Retain: capture"
+  short_description: "Save notes, tasks and confirmed updates to your Retain"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "retain"
+      description: "The Retain MCP server"
+      transport: "streamable_http"
+      url: "https://retainapp.ai/api/private/mcp"
