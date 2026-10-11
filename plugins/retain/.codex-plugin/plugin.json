@@ -1,0 +1,27 @@
+{
+  "name": "retain",
+  "version": "1.2.0-2",
+  "description": "Search, read and capture your Retain meetings, tasks and threads from your assistant.",
+  "author": {
+    "name": "Cozy Intellect Inc.",
+    "url": "https://retainapp.ai"
+  },
+  "homepage": "https://retainapp.ai",
+  "keywords": [
+    "meetings",
+    "tasks",
+    "threads",
+    "memory"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Retain",
+    "shortDescription": "Your meetings, tasks and threads, in your assistant",
+    "developerName": "Cozy Intellect Inc.",
+    "category": "Productivity",
+    "websiteURL": "https://retainapp.ai",
+    "logo": "./assets/logo.png",
+    "composerIcon": "./assets/composer-icon.png"
+  }
+}

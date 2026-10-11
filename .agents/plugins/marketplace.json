@@ -1,0 +1,12 @@
+{
+  "name": "retain",
+  "interface": { "displayName": "Retain" },
+  "plugins": [
+    {
+      "name": "retain",
+      "source": { "source": "local", "path": "./plugins/retain" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

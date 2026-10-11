@@ -15,14 +15,16 @@
     "memory"
   ],
   "extensions": {
-    "com.openai.interface": {
-      "displayName": "Retain",
-      "shortDescription": "Your meetings, tasks and threads, in your assistant",
-      "developerName": "Cozy Intellect Inc.",
-      "category": "Productivity",
-      "websiteURL": "https://retainapp.ai",
-      "logo": "./assets/logo.png",
-      "composerIcon": "./assets/composer-icon.png"
+    "com.openai": {
+      "interface": {
+        "displayName": "Retain",
+        "shortDescription": "Your meetings, tasks and threads, in your assistant",
+        "developerName": "Cozy Intellect Inc.",
+        "category": "Productivity",
+        "websiteURL": "https://retainapp.ai",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/composer-icon.png"
+      }
     }
   }
 }
