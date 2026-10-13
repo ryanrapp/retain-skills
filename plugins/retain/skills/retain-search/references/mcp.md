@@ -15,7 +15,7 @@ These are the tools of the Retain MCP connector. Your host may show them with a 
 | See what is going on in the user's threads, Action owed first | `list_threads` | `section?`, `cursor?`, `limit?` |
 | See what the user has to do: open tasks and the actions suggested on their threads | `list_tasks` | `status?`, `cursor?`, `limit?` |
 
-Not available as MCP tools: read one thread's record; read one task. Do without, or use the CLI where it is installed.
+Not available as MCP tools: read one thread's record; read one task; see what retain knows about the linked work in a folder before working on it. Do without, or use the CLI where it is installed.
 
 ## What each tool is for
 

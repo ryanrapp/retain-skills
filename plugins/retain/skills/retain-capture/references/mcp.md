@@ -19,7 +19,7 @@ These are the tools of the Retain MCP connector. Your host may show them with a 
 | Record something the user confirmed on a thread (a decision, something done, an outcome) | `add_thread_update` | `thread_id`, `kind`, `text`, `actor?`, `artifact_url?`, `occurred_at?`, `origin?`, `host?`, `authorization` |
 | Import the user's own notes or a transcript as source material | `import_notes` | `title`, `text`, `format?`, `occurred_at?` |
 
-Not available as MCP tools: read a thread's recorded updates; upload a file for an import to attach. Do without, or use the CLI where it is installed.
+Not available as MCP tools: read a thread's recorded updates; upload a file for an import to attach; link work in progress on the user's computer to the thread it advances. Do without, or use the CLI where it is installed.
 
 ## What each tool is for
 

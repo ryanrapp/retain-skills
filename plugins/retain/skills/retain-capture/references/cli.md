@@ -23,6 +23,7 @@ The `retain` CLI is installed by the Retain desktop app at `~/.local/bin/retain`
 | Read a thread's recorded updates | `retain thread update list` |
 | Import the user's own notes or a transcript as source material | `retain import` |
 | Upload a file for an import to attach | `retain file upload` |
+| Link work in progress on the user's computer to the thread it advances | `retain work link` |
 
 ## What each command is for
 
@@ -36,3 +37,4 @@ The `retain` CLI is installed by the Retain desktop app at `~/.local/bin/retain`
 - `retain thread update list`: List a thread's updates, newest first. Flags: `--limit`, `--cursor`, `--all`, `--max-items`.
 - `retain import`: Import the user's own notes, transcripts or files as source material for Retain to interpret. Flags: `--text`, `--text-file`, `--request`, `--request-file`, `--json`, `--json-file`, `--local-file`, `--attach`, `--title`, `--intent`, `--dry-run`.
 - `retain file upload`: Upload a local file or stdin as a durable file. Flags: `--name`, `--content-type`.
+- `retain work link`: Link the local work in this folder (an OpenSpec change or a checklist) to the thread it advances. Without --to, lists the work here and the best-matching threads. Flags: `--to`, `--action`, `--remove`, `--dismiss`, `--origin`, `--host`, `--authorization`.

@@ -19,6 +19,7 @@ The `retain` CLI is installed by the Retain desktop app at `~/.local/bin/retain`
 | See what the user has to do: open tasks and the actions suggested on their threads | `retain task list` |
 | Read one thread's record | `retain thread get` |
 | Read one task | `retain task get` |
+| See what Retain knows about the linked work in a folder before working on it | `retain work show` |
 
 ## What each command is for
 
@@ -28,3 +29,4 @@ The `retain` CLI is installed by the Retain desktop app at `~/.local/bin/retain`
 - `retain task list`: List what the user has to do: open tasks and the actions suggested on their threads. Flags: `--limit`, `--cursor`, `--all`, `--max-items`, `--status`, `--priority`.
 - `retain thread get`: Read a thread.
 - `retain task get`: Get a task.
+- `retain work show`: What Retain knows about the linked work in this folder: its thread, what is owed, who is waiting, and what changed since you last looked.

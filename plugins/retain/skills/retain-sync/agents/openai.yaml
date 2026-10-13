@@ -1,0 +1,10 @@
+interface:
+  display_name: "Retain: sync"
+  short_description: "Sync your linked work and read Retain's daily digest"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "retain"
+      description: "The Retain MCP server"
+      transport: "streamable_http"
+      url: "https://retainapp.ai/api/private/mcp"

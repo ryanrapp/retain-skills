@@ -1,0 +1,10 @@
+interface:
+  display_name: "Retain: email-search"
+  short_description: "Find and read your Gmail, by exact clue or by meaning, and answer from the messages"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "retain"
+      description: "The Retain MCP server"
+      transport: "streamable_http"
+      url: "https://retainapp.ai/api/private/mcp"
