@@ -1,6 +1,6 @@
 {
   "name": "retain",
-  "version": "1.2.0-2",
+  "version": "1.2.0-2.5",
   "description": "Search, read and capture your Retain meetings, tasks and threads from your assistant.",
   "author": {
     "name": "Cozy Intellect Inc.",
@@ -17,10 +17,15 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Retain",
-    "shortDescription": "Your meetings, tasks and threads, in your assistant",
+    "shortDescription": "Your meetings, tasks, threads",
+    "longDescription": "Retain keeps your meetings, notes, email and tasks, and follows what you owe and who is waiting on you as threads. This plugin lets your assistant search and read them, list what you have to do, record what you confirm on a thread, link the work on your computer to the thread it advances, and read Retain's morning digest. It needs a Retain account. It reads only what you ask about, and adds to Retain only what you confirm: it never marks something done on its own.",
     "developerName": "Cozy Intellect Inc.",
     "category": "Productivity",
+    "capabilities": [],
     "websiteURL": "https://retainapp.ai",
+    "supportURL": "https://retainapp.ai/help",
+    "privacyPolicyURL": "https://retainapp.ai/privacy-policy",
+    "termsOfServiceURL": "https://retainapp.ai/terms-of-service",
     "logo": "./assets/logo.png",
     "composerIcon": "./assets/composer-icon.png"
   }

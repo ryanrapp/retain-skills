@@ -1,6 +1,12 @@
 interface:
   display_name: "Retain: sync"
   short_description: "Sync your linked work and read Retain's daily digest"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
+  brand_color: "#344A40"
+  default_prompt: "Sync my linked work with Retain and read me today's digest."
+policy:
+  allow_implicit_invocation: false
 dependencies:
   tools:
     - type: "mcp"

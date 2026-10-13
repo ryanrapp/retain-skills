@@ -1,6 +1,12 @@
 interface:
   display_name: "Retain: search"
   short_description: "Look up what was said, decided or is outstanding in your Retain"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
+  brand_color: "#344A40"
+  default_prompt: "Use Retain to find what was said or decided about this, and tell me where it came from."
+policy:
+  allow_implicit_invocation: true
 dependencies:
   tools:
     - type: "mcp"

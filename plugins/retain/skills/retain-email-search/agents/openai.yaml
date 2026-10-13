@@ -1,6 +1,12 @@
 interface:
   display_name: "Retain: email-search"
   short_description: "Find and read your Gmail, by exact clue or by meaning, and answer from the messages"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
+  brand_color: "#344A40"
+  default_prompt: "Search my email through Retain for this, and show me the messages it rests on."
+policy:
+  allow_implicit_invocation: true
 dependencies:
   tools:
     - type: "mcp"

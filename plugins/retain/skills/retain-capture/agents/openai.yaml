@@ -1,6 +1,12 @@
 interface:
   display_name: "Retain: capture"
   short_description: "Save notes, tasks and confirmed updates to your Retain"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
+  brand_color: "#344A40"
+  default_prompt: "Save what I just confirmed to the right thread in Retain."
+policy:
+  allow_implicit_invocation: true
 dependencies:
   tools:
     - type: "mcp"
