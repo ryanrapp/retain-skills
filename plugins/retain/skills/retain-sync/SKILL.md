@@ -15,7 +15,7 @@ Retain keeps the user's threads (what they owe, who is waiting) and makes a dige
 
 ## Steps
 
-1. Run `retain sync`. It re-reads every project the user linked work in, sends today's progress, and returns `projects` and Retain's `digest`. If the CLI is not available (a host with only the Retain connector), call `get_digest` instead and say that local work is shown as last reported, not freshly read.
+1. Run `retain sync`. It re-reads every project the user linked work in, sends today's progress, and returns `projects` and Retain's `digest`. On a host with only the Retain connector (no shell), call `get_digest` instead and say that local work is shown as last reported, not freshly read. On a computer where the CLI is missing or too old to have `sync`, say that first, with how to get it (`references/cli.md`), then show `get_digest` the same way: a missing CLI is a setup problem to tell the user about, not a reason to skip the sync quietly.
 2. If a project is `missing`, say so in one line: its folder moved or was deleted.
 3. Show the digest (below). If `digest` is null, say why from `reason`: digests are off, Retain does not know the user's time zone yet, or there is none for that day.
 4. Interactive only, for each item in `confirm`:
