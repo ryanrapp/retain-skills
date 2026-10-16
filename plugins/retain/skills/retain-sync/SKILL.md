@@ -27,12 +27,13 @@ Retain keeps the user's threads (what they owe, who is waiting) and makes a dige
 At most about 15 lines, in this order, leaving out empty parts:
 
 - The date and when Retain made it ("Tuesday's digest, made 7:00, updated 8:31").
-- What the user owes, most pressing first, marking overdue or due today.
-- What is waiting on others, with how long.
+- What the user owes, most pressing first, marking overdue or due today. A row with `reason: changed` has news: say what moved (`moved`) and what is needed (`needed`) in a few words. A row with `nudge3` or `nudge7` has only gone quiet: name it briefly ("Book the venue has been quiet for 3 days") and do not dress it as news.
+- What is waiting on others and has moved, with how long.
 - Linked work that moved ("retain-cli-release: 11 of 30 tasks, +7"), and anything finished.
-- Stalled work on threads the user owes.
 - What needs an answer (the confirm items), and how many active items are not linked to anything.
 - If the digest has a briefing link, offer it as given ("you can listen to it"); never rewrite or open it.
+
+The digest lists only what has news or has gone quiet, so an owed task that is missing from it had nothing new. Never tell the user it is done or gone; they can ask for their full task list.
 
 Link each thread by the reference or link the digest gives. The digest is Retain's; your rendering is your own words about it, so never import it or save it as a note or a thread update.
 

@@ -18,6 +18,6 @@ Not available as MCP tools: send today's progress for linked work and get the di
 
 ## What each tool is for
 
-- `get_digest`: Retain's digest of the user's day: what they owe, what waits on others, how their linked work moved, and what to confirm. Use for a morning summary or 'what's my day look like'. Say when it was made; offer briefing_url as given. Not a list to edit; use list_tasks and fetch for details.
+- `get_digest`: Retain's digest of the user's day: what they owe, what waits on others, how their linked work moved, and what to confirm. Use for a morning summary or 'what's my day look like'. Rows carry a reason: 'changed' rows have news since the previous digest and say what moved and what is needed; 'nudge3' and 'nudge7' rows are owed items that have gone quiet for 3 or 7 days. A task missing from the digest had nothing new; that does not mean it is done. Say when it was made; offer briefing_url as given. Not a list to edit; use list_tasks and fetch for details.
 - `add_thread_update`: Record something the user confirmed on a thread: a decision, an action taken, an outcome. Use after they say it happened or ask you to save it; a draft stays a draft. Not for notes or transcripts they wrote; use import_notes.
 - `fetch`: Read one item by the id search or a list returned (thread:, memory:, task:, action:). A thread comes with its status and verbatim quotes. A meeting comes as its summary; read a stretch with at (seconds) or around (words), or detail full for all of it. Not for finding things; use search.
