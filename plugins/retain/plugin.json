@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "retain",
-  "version": "1.2.0-2.7",
+  "version": "1.2.0-2.8",
   "description": "Search, read and capture your Retain meetings, tasks and threads from your assistant.",
   "author": {
     "name": "Cozy Intellect Inc.",
