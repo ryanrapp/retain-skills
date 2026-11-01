@@ -1,0 +1,16 @@
+interface:
+  display_name: "Retain: apply"
+  short_description: "Build a Retain build packet in this repository"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
+  brand_color: "#344A40"
+  default_prompt: "Use $retain-apply to build my Retain packet pk_… in this repository."
+policy:
+  allow_implicit_invocation: false
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "retain"
+      description: "The Retain MCP server"
+      transport: "streamable_http"
+      url: "https://retainapp.ai/api/private/mcp"
