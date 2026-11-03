@@ -4,7 +4,7 @@ interface:
   icon_small: "./assets/icon-small.png"
   icon_large: "./assets/icon-large.png"
   brand_color: "#344A40"
-  default_prompt: "Use $retain-apply to build my Retain packet pk_… in this repository."
+  default_prompt: "Use $retain-apply to build my Retain packet in this repository: <packet name>."
 policy:
   allow_implicit_invocation: false
 dependencies:
