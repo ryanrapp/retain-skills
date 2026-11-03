@@ -19,6 +19,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 | Read the instruction, template and dependencies for one part | `retain packet instructions` |
 | Validate the packet folder; every issue has a rule, a message and a fix | `retain packet validate` |
 | Send the parts written here back to Retain | `retain packet push` |
+| Tell Retain about this build: its pull request, and the agent's session when the CLI cannot see it | `retain packet session` |
 | Read the packet's state, progress and local folder | `retain packet status` |
 | Freeze the finished packet as a snapshot of what was built | `retain packet archive` |
 | Send task progress to Retain | `retain sync` |
@@ -29,6 +30,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 - `retain packet instructions`: The instruction, template, dependencies and unlocks for one packet part (proposal, design, requirements or tasks), read against the local copy when it has been pulled. Flags: `--packet`, `--dir`.
 - `retain packet validate`: Validate a packet's parts: every issue has a rule, a message and a fix showing the expected shape. Takes a packet id (its local copy when pulled) or a packet folder. Flags: `--dir`.
 - `retain packet push`: Send the parts changed locally back to Retain. Each is validated; a part Retain changed since the pull is refused and both versions are returned. Flags: `--dir`.
+- `retain packet session`: Tell Retain about this build of a packet: its worktree, branch, pull request and the agent's session, shown on the packet's Hand-off. Pull, push and sync send the folder, branch and PR they can see by themselves; this adds what they cannot. Flags: `--pr`, `--session-url`, `--session-label`, `--agent`, `--dir`.
 - `retain packet status`: A packet's state, task progress, validation and where its local copy is. Flags: `--dir`.
 - `retain packet archive`: Freeze a finished packet as a snapshot of what was built: records the commit range and changed files, moves the folder under archive/ and makes it read-only in Retain. Never merges into long-lived specs. Flags: `--dir`, `--force`.
 - `retain sync`: Refresh the local work you linked to threads, send today's progress, and return Retain's digest for today.
