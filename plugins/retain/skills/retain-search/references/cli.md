@@ -15,8 +15,8 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 | To | Command |
 |---|---|
-| Find passages across meetings, memories and threads | `retain search` |
-| Read one item by the reference a search or list returned (thread:, memory:, task:, action:) | `retain fetch` |
+| Find passages across meetings, memories and threads (scope memories, the default), or threads, tasks or documents Retain wrote with the user by name (scope threads, tasks, documents, all) | `retain search` |
+| Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:); read a long document on with its next_offset | `retain fetch` |
 | See what is going on in the user's threads, Action owed first | `retain thread list` |
 | See what the user has to do: open tasks and the actions suggested on their threads | `retain task list` |
 | Read one thread's record | `retain thread get` |
@@ -25,8 +25,8 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 ## What each command is for
 
-- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`.
-- `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:). Flags: `--detail`, `--at`, `--around`, `--window`.
+- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`, `--scope`, `--kind`, `--since`, `--cursor`.
+- `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:, asset:). Flags: `--detail`, `--at`, `--around`, `--window`, `--offset`.
 - `retain thread list`: List threads with their section, status headline and next step. Flags: `--limit`, `--cursor`, `--all`, `--max-items`, `--section`.
 - `retain task list`: List what the user has to do: open tasks and the actions suggested on their threads. Flags: `--limit`, `--cursor`, `--all`, `--max-items`, `--status`, `--priority`.
 - `retain thread get`: Read a thread.

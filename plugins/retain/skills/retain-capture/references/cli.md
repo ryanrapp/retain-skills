@@ -29,10 +29,10 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 ## What each command is for
 
-- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`.
+- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`, `--scope`, `--kind`, `--since`, `--cursor`.
 - `retain task list`: List what the user has to do: open tasks and the actions suggested on their threads. Flags: `--limit`, `--cursor`, `--all`, `--max-items`, `--status`, `--priority`.
 - `retain thread list`: List threads with their section, status headline and next step. Flags: `--limit`, `--cursor`, `--all`, `--max-items`, `--section`.
-- `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:). Flags: `--detail`, `--at`, `--around`, `--window`.
+- `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:, asset:). Flags: `--detail`, `--at`, `--around`, `--window`, `--offset`.
 - `retain task create`: Create a task. Flags: `--request`, `--request-file`, `--title`, `--description`, `--description-file`, `--priority`, `--due`, `--id`.
 - `retain task update`: Patch a task. Flags: `--request`, `--request-file`, `--title`, `--description`, `--description-file`, `--clear-description`, `--status`, `--priority`, `--clear-priority`, `--due`, `--clear-due`, `--if-version`.
 - `retain thread update add`: Add a small update the user confirmed to a thread (append-only; never a draft passed off as done). Flags: `--text`, `--text-file`, `--request`, `--request-file`, `--kind`, `--actor`, `--artifact-url`, `--occurred-at`, `--origin`, `--host`, `--authorization`.

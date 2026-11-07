@@ -1,12 +1,12 @@
 ---
 name: retain-search
-description: Searches and reads the user's Retain data (meeting transcripts, threads and tasks). Use when the user asks what was said or decided in a meeting, what a thread or project's status is, what is on their plate or outstanding, or when a reply or plan depends on previous conversations. Do not use for general questions that need no history from the user's own meetings, or to save anything; the retain-capture skill does that.
+description: Searches and reads the user's Retain data (meetings, threads, tasks and documents). Use when the user asks what was said or decided in a meeting, what a thread or project's status is, what is on their plate or outstanding, or when a reply or plan depends on previous conversations. Do not use for general questions that need no history from the user's own meetings, or to save anything; the retain-capture skill does that.
 compatibility: Requires the Retain MCP connector or the retain CLI.
 ---
 
 # Search Retain
 
-Retain holds the user's meetings, threads and tasks. Read it through the Retain MCP tools when the connector is available, otherwise through the `retain` CLI. `references/mcp.md` and `references/cli.md` give the exact names for each.
+Retain holds the user's meetings, threads and tasks, and the documents it wrote with them. Read it through the Retain MCP tools when the connector is available, otherwise through the `retain` CLI. `references/mcp.md` and `references/cli.md` give the exact names for each.
 
 ## When to look
 
@@ -16,10 +16,21 @@ Retain holds the user's meetings, threads and tasks. Read it through the Retain 
 
 ## Find, then read
 
-1. Search narrowly. Each hit names its type, title and a reference. A snippet is a pointer, not the source.
+1. Search narrowly. Search looks in memories unless you name a scope. Each hit names its kind, title and a reference. A snippet is a pointer, not the source.
 2. Read the source before relying on a hit. A thread comes with its status, next step, suggested actions and verbatim quotes; a meeting comes as its summary.
 3. To read inside a meeting, ask for a stretch of it (a moment, or words you are looking for) and only then for the whole transcript.
 4. When several threads or meetings could be the one the user means, name the two or three closest and ask which. Never pick one silently.
+
+## Memories and documents
+
+Search has the scopes of Retain's own search: memories (the default), threads, tasks, documents and all.
+
+- Memories (meetings, notes, minutes, email) are the record of what happened. Use them for facts: what was said, decided, agreed or promised.
+- Documents are what Retain wrote with the user: email drafts, proposals, briefs, design packets, notebooks. When the user refers to one ("my proposal to Acme", "the design doc for the importer"), search scope documents and read its `asset:` reference.
+- A document is work product, never evidence of what happened. It may never have been sent, or may say what someone hoped. For what a client agreed to, search memories for the meeting or email, not the draft. A document names the records it was written from; read those for the facts.
+- A document's state says whether it is a draft, sent, sent after an edit, archived or out of date. Say which when you use it.
+- A long document comes in pieces: read on with the next offset it gives. A design packet lists its files, each with its own reference.
+- A thread lists the drafts written for it, and a task the documents its steps produced, as `asset:` references.
 
 ## Starting work on something linked
 

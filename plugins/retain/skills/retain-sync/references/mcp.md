@@ -12,7 +12,7 @@ These are the tools of the Retain MCP connector. Your host may show them with a 
 |---|---|---|
 | Read Retain's digest without syncing (a past day with a date) | `get_digest` | `date?` |
 | Record finished work the user confirmed as an outcome on its thread | `add_thread_update` | `thread_id`, `kind`, `text`, `actor?`, `artifact_url?`, `occurred_at?`, `origin?`, `host?`, `authorization` |
-| Read a thread back after an update | `fetch` | `id`, `detail?`, `at?`, `around?`, `window?` |
+| Read a thread back after an update | `fetch` | `id`, `offset?`, `detail?`, `at?`, `around?`, `window?` |
 
 Not available as MCP tools: send today's progress for linked work and get the digest back; link a suggested item to its thread, or dismiss the suggestion. Do without, or use the CLI where it is installed.
 
@@ -20,4 +20,4 @@ Not available as MCP tools: send today's progress for linked work and get the di
 
 - `get_digest`: Retain's digest of the user's day: what they owe, what waits on others, how their linked work moved, and what to confirm. Use for a morning summary or 'what's my day look like'. Rows carry a reason: 'changed' rows have news since the previous digest and say what moved and what is needed; 'nudge3' and 'nudge7' rows are owed items that have gone quiet for 3 or 7 days. A task missing from the digest had nothing new; that does not mean it is done. Say when it was made; offer briefing_url as given. Not a list to edit; use list_tasks and fetch for details.
 - `add_thread_update`: Record something the user confirmed on a thread: a decision, an action taken, an outcome. Use after they say it happened or ask you to save it; a draft stays a draft. Not for notes or transcripts they wrote; use import_notes.
-- `fetch`: Read one item by the id search or a list returned (thread:, memory:, task:, action:). A thread comes with its status and verbatim quotes. A meeting comes as its summary; read a stretch with at (seconds) or around (words), or detail full for all of it. Not for finding things; use search.
+- `fetch`: Read one item by an id search or a list returned (thread:, memory:, task:, action:, asset:). A meeting comes as its summary; read a stretch with at (seconds) or around (words). asset: is a document Retain wrote with the user: work product, naming the records to fetch for facts. Pass next_offset as offset to read on.

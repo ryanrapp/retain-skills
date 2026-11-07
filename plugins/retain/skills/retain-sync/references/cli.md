@@ -27,4 +27,4 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 - `retain digest`: Read Retain's daily digest (today's, or another day's) without syncing. Flags: `--date`.
 - `retain work link`: Link the local work in this folder (an OpenSpec change or a checklist) to the thread it advances. Without --to, lists the work here and the best-matching threads. Flags: `--to`, `--action`, `--remove`, `--dismiss`, `--origin`, `--host`, `--authorization`.
 - `retain thread update add`: Add a small update the user confirmed to a thread (append-only; never a draft passed off as done). Flags: `--text`, `--text-file`, `--request`, `--request-file`, `--kind`, `--actor`, `--artifact-url`, `--occurred-at`, `--origin`, `--host`, `--authorization`.
-- `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:). Flags: `--detail`, `--at`, `--around`, `--window`.
+- `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:, asset:). Flags: `--detail`, `--at`, `--around`, `--window`, `--offset`.
