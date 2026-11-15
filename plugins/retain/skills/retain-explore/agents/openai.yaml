@@ -1,0 +1,16 @@
+interface:
+  display_name: "Retain: explore"
+  short_description: "Think through a change with the code and your Retain before designing it"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
+  brand_color: "#344A40"
+  default_prompt: "Use $retain-explore to think through this change with me, using the code here and what my Retain knows about it."
+policy:
+  allow_implicit_invocation: false
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "retain"
+      description: "The Retain MCP server"
+      transport: "streamable_http"
+      url: "https://retainapp.ai/api/private/mcp"
