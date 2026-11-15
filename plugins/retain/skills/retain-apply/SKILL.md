@@ -1,6 +1,6 @@
 ---
 name: retain-apply
-description: Builds a named Retain build packet here: pulls it, writes and validates its requirements and tasks against the code, pushes them back, then builds it task by task. Use when the user runs /retain:apply or asks to build a Retain packet. Do not use for OpenSpec changes.
+description: Builds a named Retain build packet here, including an OpenSpec change that retain sync imported: pulls it, writes missing requirements and tasks, pushes them, builds it task by task. Use when the user runs /retain:apply. Do not use to edit OpenSpec changes in the repository.
 compatibility: Requires the retain CLI and a checkout of the packet's repository. The Retain MCP connector alone cannot apply a packet.
 ---
 
@@ -8,24 +8,28 @@ compatibility: Requires the retain CLI and a checkout of the packet's repository
 
 A build packet is a design Retain wrote with the user: `proposal.md` (why, what changes, what is left out) and `design.md` (the decision and how it fits what exists). You write the other half here, against the real code: `requirements.md` and `tasks.md`. Then you build it. `references/cli.md` gives the exact commands.
 
-The arguments are the packet's name (lowercase words joined by hyphens, as Retain shows it on the packet's Hand-off tab) and, optionally, `--review`. Without a name, ask for it. Older commands may pass an id that starts with `pk_`; it works the same. Use the name `retain packet pull` prints from then on.
+An OpenSpec change that `retain sync` imported is a packet too, with format `openspec/1`, named like its folder (`ios-work`). Its parts came from the repository's `openspec/changes/<name>` (the specs joined into `requirements.md`, one section per capability). Retain neither checks them nor writes them: you build from what is there.
+
+The arguments are the packet's name (lowercase words joined by hyphens, as Retain shows it on the packet's Hand-off tab) and, optionally, `--review`. Without a name, ask for it. Older commands may pass an id that starts with `pk_`; it works the same. Use the id `retain packet pull` prints from then on.
 
 ## Ground rules
 
-- The CLI is the contract. Take every instruction, template and check from `retain packet instructions` and `retain packet validate`; never from memory of another spec format. The packet is not an OpenSpec change.
+- The CLI is the contract. Take every instruction, template and check from `retain packet instructions` and `retain packet validate`; never from memory of another spec format. Pull reports the packet's `format`: only a `retain-packet/1` packet has instructions and checks.
+- The packet folder is the working copy, even for an imported OpenSpec change. Never edit the repository's `openspec/changes` folder for it: that copy is shared, and the packet is the user's.
 - Packet files live in the folder `retain packet pull` prints as `dir`. It may be outside the repository (the default is under `~/.local/share/retain/packets`). Code changes go in the checkout; packet changes go in `dir`. Never copy packet files into the repository.
 - If writing in `dir` is refused, the assistant was started without access to it. Stop and tell the user the flag to add when starting it: `--add-dir <dir's packet root>` for Claude Code or Codex.
 - What the user decided in Retain is the direction. Do not redesign it; if the code makes the design wrong, say so and ask before departing from it.
 
 ## Steps
 
-1. **Pull.** Run `retain packet pull <name>` in the repository. It writes the files, links the packet to its thread, and prints `dir`, `state`, `partsMissing` and `commitsSinceDesign`.
+1. **Pull.** Run `retain packet pull <name>` in the repository. It writes the files, links the packet to its thread, and prints `dir`, `state`, `format`, `partsMissing` and `commitsSinceDesign`.
+   - An `ambiguous_packet` refusal means several packets have that name and none is this repository's. Ask the user which one, listing each candidate's title, repository, state and last change from the refusal's `candidates`: in Claude Code with the AskUserQuestion tool, elsewhere as a plain question. Then pull it by its `id` and use that id from then on.
    - A refusal for the wrong repository names the expected one: tell the user and stop.
    - A refusal because local files changed: show which, and ask before passing `--force`.
    - `state` drafting: Retain is still writing it; stop and say so.
    - `state` archived: it is a read-only record; read it if asked, build nothing.
-2. **Check the design against the code.** Read `proposal.md` and `design.md` from `dir`. When `commitsSinceDesign` is above zero, check each claim in the design's "What exists" section against the code now and list any that no longer hold. Ask the user about each open question in the design's "Open questions" section before writing requirements, unless it says None.
-3. **Write the missing parts**, in order (requirements, then tasks), for each part in `partsMissing`:
+2. **Check the design against the code.** Read `proposal.md` and `design.md` from `dir` (an imported change may have no design). When `commitsSinceDesign` is above zero and the design says what exists (a "What exists" or "Context" section), check those claims against the code now and list any that no longer hold. When it has open questions (an "Open questions" section), ask the user about each before building, unless it says None.
+3. **Write the missing parts.** For a packet whose `format` is not `retain-packet/1`, write nothing: `partsMissing` lists only `tasks` when there are none, and then stop and say the change has no tasks to build. Otherwise, in order (requirements, then tasks), for each part in `partsMissing`:
    - Run `retain packet instructions <part> --packet <name>`. Follow its `instruction`, fill its `template`, and read the files in its `dependencies` first.
    - Write the part to `dir/<outputPath>`.
    - Run `retain packet validate <name>`. For each issue at error level, fix it as its `message` says, using its `fix` as the shape expected, and validate again. Warnings may stay.

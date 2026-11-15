@@ -33,4 +33,4 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 - `retain packet session`: Tell Retain about this build of a packet: its worktree, branch, pull request and the agent's session, shown on the packet's Hand-off. Pull, push and sync send the folder, branch and PR they can see by themselves; this adds what they cannot. Flags: `--pr`, `--session-url`, `--session-label`, `--agent`, `--dir`.
 - `retain packet status`: A packet's state, task progress, validation and where its local copy is. Flags: `--dir`.
 - `retain packet archive`: Freeze a finished packet as a snapshot of what was built: records the commit range and changed files, moves the folder under archive/ and makes it read-only in Retain. Never merges into long-lived specs. Flags: `--dir`, `--force`.
-- `retain sync`: Refresh the local work you linked to threads, send today's progress, and return Retain's digest for today.
+- `retain sync`: Refresh the local work you linked to threads, send today's progress, and return Retain's digest for today. Flags: `--resolve`.
