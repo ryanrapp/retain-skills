@@ -10,12 +10,12 @@ These are the tools of the Retain MCP connector. Your host may show them with a 
 
 | To | Tool | Arguments (`?` is optional) |
 |---|---|---|
-| Find passages across meetings, memories and threads, or threads, tasks or documents Retain wrote with the user, such as earlier designs | `search` | `query`, `scope?`, `kind?`, `since?`, `cursor?`, `limit?` |
+| Find passages across meetings, memories and threads, earlier technical designs by the words in their body (scope designs), or threads, tasks or documents Retain wrote with the user | `search` | `query`, `scope?`, `kind?`, `since?`, `cursor?`, `limit?` |
 | Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:) | `fetch` | `id`, `offset?`, `detail?`, `at?`, `around?`, `window?` |
 
 Not available as MCP tools: read where packets go for this checkout, and its repository folder; read the instruction and template for the proposal or the design; validate the packet folder; every issue has a rule, a message and a fix; check whether this repository already has a packet of the name; create the packet in retain from the folder, once the proposal and the design are valid. Do without, or use the CLI where it is installed.
 
 ## What each tool is for
 
-- `search`: Find things in Retain. Default scope memories: meetings, notes, email; the record of what happened, for facts, with who said it and when. Scope documents: what Retain wrote with the user (drafts, proposals); work product, never evidence. Also threads, tasks, all. Hits say their kind. Fetch a hit before relying on it.
+- `search`: Find things in Retain. Default scope memories: meetings, notes, email; what happened, with who said it and when. Scope documents: what Retain wrote with the user; work product, never evidence. Scope designs: earlier technical designs, by words in their body. Also threads, tasks, all. Fetch a hit before relying on it.
 - `fetch`: Read one item by an id search or a list returned (thread:, memory:, task:, action:, asset:). A meeting comes as its summary; read a stretch with at (seconds) or around (words). asset: is a document Retain wrote with the user: work product, naming the records to fetch for facts. Pass next_offset as offset to read on.

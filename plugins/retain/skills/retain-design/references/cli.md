@@ -15,7 +15,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 | To | Command |
 |---|---|
-| Find passages across meetings, memories and threads, or threads, tasks or documents Retain wrote with the user, such as earlier designs | `retain search` |
+| Find passages across meetings, memories and threads, earlier technical designs by the words in their body (scope designs), or threads, tasks or documents Retain wrote with the user | `retain search` |
 | Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:) | `retain fetch` |
 | Read where packets go for this checkout, and its repository folder | `retain packet root` |
 | Read the instruction and template for the proposal or the design | `retain packet instructions` |

@@ -15,7 +15,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 | To | Command |
 |---|---|
-| Find passages across meetings, memories and threads (scope memories, the default), or threads, tasks or documents Retain wrote with the user, such as earlier designs (scope documents) | `retain search` |
+| Find passages across meetings, memories and threads (scope memories, the default); earlier technical designs and build packets by the words in their body (scope designs); or threads, tasks or other documents Retain wrote with the user (scope documents) | `retain search` |
 | Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:) | `retain fetch` |
 | See what is going on in the user's threads | `retain thread list` |
 | See what the user has to do: open tasks and the actions suggested on their threads | `retain task list` |
