@@ -10,7 +10,7 @@ These are the tools of the Retain MCP connector. Your host may show them with a 
 
 | To | Tool | Arguments (`?` is optional) |
 |---|---|---|
-| Find passages across meetings, memories and threads, earlier technical designs by the words in their body (scope designs), or threads, tasks or documents Retain wrote with the user | `search` | `query`, `scope?`, `kind?`, `since?`, `cursor?`, `limit?` |
+| Find passages across meetings, memories and threads, earlier technical designs by the words or meaning of their body (scope designs), or threads, tasks or other documents Retain wrote with the user (scope documents) | `search` | `query`, `scope?`, `kind?`, `state?`, `since?`, `cursor?`, `limit?` |
 | Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:) | `fetch` | `id`, `offset?`, `detail?`, `at?`, `around?`, `window?` |
 
 Not available as MCP tools: read where packets go for this checkout, and its repository folder; read the instruction and template for the proposal or the design; validate the packet folder; every issue has a rule, a message and a fix; check whether this repository already has a packet of the name; create the packet in retain from the folder, once the proposal and the design are valid. Do without, or use the CLI where it is installed.

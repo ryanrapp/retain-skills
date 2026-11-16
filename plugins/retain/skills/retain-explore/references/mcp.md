@@ -10,7 +10,7 @@ These are the tools of the Retain MCP connector. Your host may show them with a 
 
 | To | Tool | Arguments (`?` is optional) |
 |---|---|---|
-| Find passages across meetings, memories and threads (scope memories, the default); earlier technical designs and build packets by the words in their body (scope designs); or threads, tasks or other documents Retain wrote with the user (scope documents) | `search` | `query`, `scope?`, `kind?`, `since?`, `cursor?`, `limit?` |
+| Find passages across meetings, memories and threads (scope memories, the default); threads or tasks; or documents Retain wrote with the user, such as earlier designs, by the words or meaning of their body, filtered by kind, state and since (scope documents; scope designs for design docs only) | `search` | `query`, `scope?`, `kind?`, `state?`, `since?`, `cursor?`, `limit?` |
 | Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:) | `fetch` | `id`, `offset?`, `detail?`, `at?`, `around?`, `window?` |
 | See what is going on in the user's threads | `list_threads` | `section?`, `cursor?`, `limit?` |
 | See what the user has to do: open tasks and the actions suggested on their threads | `list_tasks` | `status?`, `cursor?`, `limit?` |

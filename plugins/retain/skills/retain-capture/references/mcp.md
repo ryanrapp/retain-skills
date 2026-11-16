@@ -10,7 +10,7 @@ These are the tools of the Retain MCP connector. Your host may show them with a 
 
 | To | Tool | Arguments (`?` is optional) |
 |---|---|---|
-| Find an existing item first, so a save updates it instead of duplicating it | `search` | `query`, `scope?`, `kind?`, `since?`, `cursor?`, `limit?` |
+| Find an existing item first, so a save updates it instead of duplicating it | `search` | `query`, `scope?`, `kind?`, `state?`, `since?`, `cursor?`, `limit?` |
 | See the user's open tasks and thread suggestions before adding a task | `list_tasks` | `status?`, `cursor?`, `limit?` |
 | See which threads need the user's attention (the weekly review) | `list_threads` | `section?`, `cursor?`, `limit?` |
 | Read a thread before reporting on it | `fetch` | `id`, `offset?`, `detail?`, `at?`, `around?`, `window?` |

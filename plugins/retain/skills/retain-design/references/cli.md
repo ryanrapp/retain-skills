@@ -15,7 +15,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 | To | Command |
 |---|---|
-| Find passages across meetings, memories and threads, earlier technical designs by the words in their body (scope designs), or threads, tasks or documents Retain wrote with the user | `retain search` |
+| Find passages across meetings, memories and threads, earlier technical designs by the words or meaning of their body (scope designs), or threads, tasks or other documents Retain wrote with the user (scope documents) | `retain search` |
 | Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:) | `retain fetch` |
 | Read where packets go for this checkout, and its repository folder | `retain packet root` |
 | Read the instruction and template for the proposal or the design | `retain packet instructions` |
@@ -25,7 +25,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 ## What each command is for
 
-- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`, `--scope`, `--kind`, `--since`, `--cursor`.
+- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`, `--scope`, `--kind`, `--state`, `--since`, `--cursor`.
 - `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:, asset:). Flags: `--detail`, `--at`, `--around`, `--window`, `--offset`.
 - `retain packet root`: Where packets are written for the current checkout and where that came from: --dir, RETAIN_PACKETS_ROOT, packets.root for this repository, packets.root, or the default under ~/.local/share/retain/packets. Flags: `--dir`.
 - `retain packet instructions`: The instruction, template, dependencies and unlocks for one packet part (proposal, design, requirements or tasks), read against the local copy when it has been pulled. Flags: `--packet`, `--dir`.

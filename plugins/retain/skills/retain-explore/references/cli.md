@@ -15,7 +15,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 | To | Command |
 |---|---|
-| Find passages across meetings, memories and threads (scope memories, the default); earlier technical designs and build packets by the words in their body (scope designs); or threads, tasks or other documents Retain wrote with the user (scope documents) | `retain search` |
+| Find passages across meetings, memories and threads (scope memories, the default); threads or tasks; or documents Retain wrote with the user, such as earlier designs, by the words or meaning of their body, filtered by kind, state and since (scope documents; scope designs for design docs only) | `retain search` |
 | Read one item by the reference a search or list returned (thread:, memory:, task:, action:, asset:) | `retain fetch` |
 | See what is going on in the user's threads | `retain thread list` |
 | See what the user has to do: open tasks and the actions suggested on their threads | `retain task list` |
@@ -24,7 +24,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 ## What each command is for
 
-- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`, `--scope`, `--kind`, `--since`, `--cursor`.
+- `retain search`: Search the knowledge base. Flags: `--text`, `--text-file`, `--limit`, `--scope`, `--kind`, `--state`, `--since`, `--cursor`.
 - `retain fetch`: Read one item in full by the reference search or task list returned (thread:, memory:, task:, action:, asset:). Flags: `--detail`, `--at`, `--around`, `--window`, `--offset`.
 - `retain thread list`: List threads with their section, status headline and next step. Flags: `--limit`, `--cursor`, `--all`, `--max-items`, `--section`.
 - `retain task list`: List what the user has to do: open tasks and the actions suggested on their threads. Flags: `--limit`, `--cursor`, `--all`, `--max-items`, `--status`, `--priority`.
