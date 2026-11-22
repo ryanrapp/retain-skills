@@ -32,13 +32,13 @@ For each of the four, gather the evidence, reading only:
 - **Progress:** `done` of `total` from the list. `retain packet status <id>` gives the local copy's folder (`local.dir`) when it was pulled on this computer.
 - **Tasks still open:** read `tasks.md` from the local copy, or for an `openspec/1` packet from `openspec/changes/<name>/tasks.md` in the checkout. For each unchecked task, look in the code for whether it was done: a short search for the names it mentions, not a full review. When neither copy is here, say the tasks were not read.
 - **Pull requests:** the list's `pullRequests` with their state. `gh pr view <url> --json state,mergedAt` reads one's current state when `gh` is available.
-- **Someone building it:** `agentActiveAt` within the last day.
+- **Someone building it:** the list's `claim`, when it is not null and its `expiresAt` is still ahead: a live claim by the build named in it (`agent`, `device`, `branch`).
 
 ## 4. Recommend
 
 One recommendation per packet, in this order:
 
-- An agent reported within the last day, or a pull request is open → **Keep**: it is in flight.
+- A live claim, or a pull request is open → **Keep**: it is in flight. A claimed packet is never archived or dropped: do not ask about it, and name its holder as the evidence ("Claude Code on MacBook holds it, renewed 4 min ago").
 - Every task is done, or the unchecked ones are in the code, or its pull request merged and what is left is trivial → **Archive**: it is built.
 - Real tasks are left and the work still makes sense → **Finish**.
 - No real progress, superseded by other work, or no longer wanted → **Drop**.
@@ -49,7 +49,7 @@ The reason is one line naming the evidence: "PR #412 merged; tasks 4.2 and 4.3 a
 
 Show the four as a short numbered list: name, title, `done/total`, pull requests, and the recommendation with its reason. Then ask:
 
-- In Claude Code, one AskUserQuestion call with one question per packet. Each offers Archive, Drop, Finish and Keep, with the recommendation first and marked (Recommended).
+- In Claude Code, one AskUserQuestion call with one question per packet. Each offers Archive, Drop, Finish and Keep, with the recommendation first and marked (Recommended). A claimed packet gets no question: it is shown as Keep, with its holder.
 - Elsewhere, ask for a reply such as "1 archive, 2 keep, 3 finish, 4 drop", and read back what you understood before acting.
 
 A packet the user did not answer for is Keep for this run, and is not recorded as kept.

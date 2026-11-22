@@ -1,0 +1,28 @@
+{
+  "description": "Keeps a build packet's claim only while the agent works on it: after each tool call that touches the claim's worktree (or once the worktree changed), retain packet heartbeat renews the claim this agent session holds, at most once every 5 minutes; when the session ends, it releases them.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "r=\"$(command -v retain 2>/dev/null || printf '%s' \"$HOME/.local/bin/retain\")\"; [ -x \"$r\" ] && \"$r\" packet heartbeat --stdin >/dev/null 2>&1; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "r=\"$(command -v retain 2>/dev/null || printf '%s' \"$HOME/.local/bin/retain\")\"; [ -x \"$r\" ] && \"$r\" packet heartbeat --stdin --release >/dev/null 2>&1; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
