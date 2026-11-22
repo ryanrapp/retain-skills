@@ -21,7 +21,6 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 | Archive a built packet as a snapshot of what was built | `retain packet archive` |
 | Drop a packet that will not be built | `retain packet drop` |
 | Bring a dropped packet back | `retain packet restore` |
-| Carry an OpenSpec change archived in the repository over to its packet | `retain sync` |
 
 ## What each command is for
 
@@ -31,4 +30,3 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 - `retain packet archive`: Freeze a finished packet as a snapshot of what was built: records the commit range and changed files, moves the folder under archive/ and makes it read-only in Retain. Never merges into long-lived specs. A packet not pulled here, such as an imported OpenSpec change, is archived from Retain's copy of its tasks: Retain holds the archive state, whatever the repository's openspec folders say. Flags: `--dir`, `--force`.
 - `retain packet drop`: Drop a packet that will not be built: Retain keeps it as a record, off the live Work list, with the tasks it left open and why. For an imported OpenSpec change it also deletes openspec/changes/<name> here, refusing while that folder has uncommitted changes. retain packet restore undoes it. Flags: `--reason`, `--dir`.
 - `retain packet restore`: Restore a dropped packet to the state its files and task progress give it. A packet that is not dropped is left as it is.
-- `retain sync`: Refresh the local work you linked to threads, send today's progress, and return Retain's digest for today. Flags: `--resolve`.

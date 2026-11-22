@@ -23,7 +23,7 @@ If it is in neither place, or it answers `unrecognized subcommand` for a command
 
 ## What each command is for
 
-- `retain sync`: Refresh the local work you linked to threads, send today's progress, and return Retain's digest for today. Flags: `--resolve`.
+- `retain sync`: Refresh the local work you linked to threads, send today's progress, and return Retain's digest for today.
 - `retain digest`: Read Retain's daily digest (today's, or another day's) without syncing. Flags: `--date`.
 - `retain work link`: Link the local work in this folder (an OpenSpec change or a checklist) to the thread it advances. Without --to, lists the work here and the best-matching threads. Flags: `--to`, `--action`, `--remove`, `--dismiss`, `--origin`, `--host`, `--authorization`.
 - `retain thread update add`: Add a small update the user confirmed to a thread (append-only; never a draft passed off as done). Flags: `--text`, `--text-file`, `--request`, `--request-file`, `--kind`, `--actor`, `--artifact-url`, `--occurred-at`, `--origin`, `--host`, `--authorization`.

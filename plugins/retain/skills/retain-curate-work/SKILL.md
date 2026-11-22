@@ -30,7 +30,7 @@ From the listed packets, oldest change first, skip the ones the user kept (below
 For each of the four, gather the evidence, reading only:
 
 - **Progress:** `done` of `total` from the list. `retain packet status <id>` gives the local copy's folder (`local.dir`) when it was pulled on this computer.
-- **Tasks still open:** read `tasks.md` from the local copy, or for an `openspec/1` packet from `openspec/changes/<name>/tasks.md` in the checkout. For each unchecked task, look in the code for whether it was done: a short search for the names it mentions, not a full review. When neither copy is here, say the tasks were not read.
+- **Tasks still open:** read `tasks.md` from the local copy, or from Retain's copy (`retain packet pull <id>`) when there is none. For each unchecked task, look in the code for whether it was done: a short search for the names it mentions, not a full review. When neither copy is here, say the tasks were not read.
 - **Pull requests:** the list's `pullRequests` with their state. `gh pr view <url> --json state,mergedAt` reads one's current state when `gh` is available.
 - **Someone building it:** the list's `claim`, when it is not null and its `expiresAt` is still ahead: a live claim by the build named in it (`agent`, `device`, `branch`).
 
@@ -58,10 +58,8 @@ A packet the user did not answer for is Keep for this run, and is not recorded a
 
 Each decision on its own. Report what each command returned, and when one fails, say so and go on with the others.
 
-- **Archive:** Retain holds the archive state, whatever the repository's openspec folders say, so archive in Retain first, for every format: `retain packet archive <id>` in the checkout, with `--force` when tasks are unchecked, which records them as open in the snapshot. It needs no local copy.
-  - Then, for an `openspec/1` packet, tidy the repository: `openspec archive <name> --yes` in the checkout. Say the repository now has the archived change to commit. Never commit it for the user.
-  - When `openspec archive` refuses (a spec delta that no longer matches its spec), the packet is still archived in Retain and the repository is unchanged: show its message, and ask whether to fix the delta or archive with `--skip-specs`, which leaves the specs as they are.
-- **Drop:** `retain packet drop <id> --reason "<the reason>"`. For an imported change it deletes `openspec/changes/<name>` too, and refuses while that folder has uncommitted changes; show the files it names and leave it. Say the deletion is the user's to commit. Say that `retain packet restore <id>` brings a dropped packet back.
+- **Archive:** `retain packet archive <id>` in the checkout, for every format, with `--force` when tasks are unchecked, which records them as open in the snapshot. It needs no local copy. Retain holds the archive state; there is no repository folder to tidy.
+- **Drop:** `retain packet drop <id> --reason "<the reason>"`. If the checkout still has the change's `openspec/changes/<name>` folder, it deletes it too, and refuses while that folder has uncommitted changes; show the files it names and leave it. Say the deletion is the user's to commit. Say that `retain packet restore <id>` brings a dropped packet back.
 - **Finish:** change nothing. List `/retain:apply <name>` for each, to run one at a time, each in its own session or worktree.
 - **Keep:** change nothing in Retain. Record it as kept (below).
 

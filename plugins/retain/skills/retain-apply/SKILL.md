@@ -1,6 +1,6 @@
 ---
 name: retain-apply
-description: Builds a named Retain build packet here, including an OpenSpec change that retain sync imported: pulls it, writes missing requirements and tasks, pushes them, builds it task by task. Use when the user runs /retain:apply. Do not use to edit OpenSpec changes in the repository.
+description: Builds a named Retain build packet here, including an OpenSpec change Retain imported: pulls it, writes missing requirements and tasks, pushes them, builds it task by task. Use when the user runs /retain:apply. Do not use to edit OpenSpec changes in the repository.
 compatibility: Requires the retain CLI and a checkout of the packet's repository. The Retain MCP connector alone cannot apply a packet.
 ---
 
@@ -8,14 +8,14 @@ compatibility: Requires the retain CLI and a checkout of the packet's repository
 
 A build packet is a design Retain wrote with the user: `proposal.md` (why, what changes, what is left out) and `design.md` (the decision and how it fits what exists). You write the other half here, against the real code: `requirements.md` and `tasks.md`. Then you build it. `references/cli.md` gives the exact commands.
 
-An OpenSpec change that `retain sync` imported is a packet too, with format `openspec/1`, named like its folder (`ios-work`). Its parts came from the repository's `openspec/changes/<name>` (the specs joined into `requirements.md`, one section per capability). Retain neither checks them nor writes them: you build from what is there.
+An OpenSpec change Retain imported is a packet too, with format `openspec/1`, named like its old folder (`ios-work`). Its parts came from the repository's `openspec/changes/<name>` (the specs joined into `requirements.md`, one section per capability). Retain neither checks them nor writes them: you build from what is there.
 
 The arguments are the packet's name (lowercase words joined by hyphens, as Retain shows it on the packet's Build tab) and, optionally, `--review`. Without a name, ask for it. Older commands may pass an id that starts with `pk_`; it works the same. Use the id `retain packet pull` prints from then on.
 
 ## Ground rules
 
 - The CLI is the contract. Take every instruction, template and check from `retain packet instructions` and `retain packet validate`; never from memory of another spec format. Pull reports the packet's `format`: only Retain's own formats (`retain-packet/1` and `retain-packet/2`) have instructions and checks.
-- The packet folder is the working copy, even for an imported OpenSpec change. Never edit the repository's `openspec/changes` folder for it: that copy is shared, and the packet is the user's.
+- The packet folder is the working copy, even for an imported OpenSpec change. Retain holds it: the repository no longer has an `openspec` folder to edit.
 - Packet files live in the folder `retain packet pull` prints as `dir`. It may be outside the repository (the default is under `~/.local/share/retain/packets`). Code changes go in the checkout; packet changes go in `dir`. Never copy packet files into the repository.
 - If writing in `dir` is refused, the assistant was started without access to it. Stop and tell the user the flag to add when starting it: `--add-dir <dir's packet root>` for Claude Code or Codex.
 - What the user decided in Retain is the direction. Do not redesign it; if the code makes the design wrong, say so and ask before departing from it.

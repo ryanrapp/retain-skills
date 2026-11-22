@@ -21,10 +21,6 @@ Retain keeps the user's threads (what they owe, who is waiting) and makes a dige
 4. Interactive only, for each item in `confirm`:
    - **A suggested link** ("retain-work-sync could advance Agent work sync"): on yes, run `retain work link "<project path>/<where>" --to <thread> --origin agent --host <your host> --authorization user_confirmed`, using `where` from the sync's `projects`. On no, run the same with `--dismiss <thread>` so it is never suggested again.
    - **Finished work** ("retain-cli-release finished; mark Ship the Retain CLI done?"): on yes, add an `outcome` thread update saying what finished, as the user's own move, with `--authorization user_confirmed`. Then read the thread back and say where it now stands; say it is done only if the returned section says so.
-5. Interactive only, for each conflict in a project's `imports.conflicts`: sync imports the project's OpenSpec changes into Retain as build packets. A conflict means the same part was edited in Retain and in the repository since it was last imported, and nothing was changed.
-   - Ask the user which copy to keep, one conflict at a time: in Claude Code with the AskUserQuestion tool, elsewhere as a plain question. Offer Retain's copy first (people are moving their changes into Retain), then the local copy. Say in a line or two how the two differ, from `retainContent` and `localContent`; never paste either whole.
-   - On an answer, run `retain sync --resolve <resolve>=retain` or `=local`, using the conflict's `resolve` value, and say what the sync then returned for it. `retain` keeps Retain's copy and stops asking about this local version. `local` replaces Retain's copy with the repository's.
-   - Never answer one for the user. Retain never writes to the repository, so either answer leaves the repository's files as they are.
 
 ## Showing the digest
 
@@ -34,8 +30,7 @@ At most about 15 lines, in this order, leaving out empty parts:
 - What the user owes, most pressing first, marking overdue or due today. A row with `reason: changed` has news: say what moved (`moved`) and what is needed (`needed`) in a few words. A row with `nudge3` or `nudge7` has only gone quiet: name it briefly ("Book the venue has been quiet for 3 days") and do not dress it as news.
 - What is waiting on others and has moved, with how long.
 - Linked work that moved ("retain-cli-release: 11 of 30 tasks, +7"), and anything finished.
-- OpenSpec changes imported as packets this time (`imports.imported`, by name), in one line, only when there are some.
-- What needs an answer (the confirm items, and in morning mode each import conflict by change and part), and how many active items are not linked to anything.
+- What needs an answer (the confirm items), and how many active items are not linked to anything.
 - If the digest has a briefing link, offer it as given ("you can listen to it"); never rewrite or open it.
 
 The digest lists only what has news or has gone quiet, so an owed task that is missing from it had nothing new. Never tell the user it is done or gone; they can ask for their full task list.
