@@ -19,11 +19,11 @@ One line from `repo` and `totals`: this repository only, its packets ready to bu
 
 ## 2. Nothing to build
 
-When `pick` is null, say why: none is ready to build, or every one is claimed by another build (`claimedByOthers`). When `readyToCurate` is above zero, say that many look finished and suggest `/retain:curate-work`. Then stop.
+When `pick` is null, say why: none is ready to build, every one is claimed by another build (`claimedByOthers`), or waits on a packet it builds on that has no pull request yet (`blocked`; `retain packet status <name>` shows which, and `retain packet deps <name>` reads their pull requests again). When `readyToCurate` is above zero, say that many look finished and suggest `/retain:curate-work`. Then stop.
 
 ## 3. Ask
 
-Show the pick and each alternative: its name, title, state, `done/total` and its `reasons`, as Retain gave them, and its thread's subject when it has one. Then ask which to build:
+Show the pick and each alternative: its name, title, state, `done/total` and its `reasons`, as Retain gave them, its thread's subject when it has one, and when its `dependencyBase` is not `default`, the dependency branch it would stack onto. When `totals.blocked` is above zero, say that many wait on a dependency. Then ask which to build:
 
 - In Claude Code, one AskUserQuestion call with the pick (marked Recommended), each alternative, and None.
 - Elsewhere, ask in plain text and read back the one you understood.
@@ -34,12 +34,13 @@ None, or no answer, ends the run: claim nothing and change nothing.
 
 The claim is taken from inside the worktree, so it names the folder and branch the build runs in. It belongs to this agent session (where the CLI cannot tell the session, as in Codex, to that worktree).
 
-- Make a worktree beside the checkout, `../<checkout folder>-<name>`, on a new branch `<name>` from the default branch: `git fetch origin` then `git worktree add -b <name> <path> origin/<default branch>`. When that branch or folder already exists, ask the user whether to build there, or stop. When the repository's conventions (its `AGENTS.md` or `CLAUDE.md`) say how worktrees are set up (for example `scripts/worktree-setup.sh`), follow them. When the user declines a worktree, build in place, on a branch of its own.
+- Make a worktree beside the checkout, `../<checkout folder>-<name>`, on a new branch `<name>` from the pick's `dependencyBase`: `git fetch origin` then `git worktree add -b <name> <path> origin/<base>`, where `<base>` is the default branch for `default`, the dependency's `branch` for `stack` (ask the user for it when it is null), and the branch the user picks for `choose` (ask, listing each option's name and branch). When that branch or folder already exists, ask the user whether to build there, or stop. When the repository's conventions (its `AGENTS.md` or `CLAUDE.md`) say how worktrees are set up (for example `scripts/worktree-setup.sh`), follow them. When the user declines a worktree, build in place, on a branch of its own.
 - In that worktree, run `retain packet next --claim <name>`.
   - It claims the packet for this worktree. Run every command of the build in that folder from then on.
   - `claimed`: another build took it meanwhile. Remove the worktree you just made (`git worktree remove <path>`, then `git branch -D <name>`), say who holds it from `holder`, and offer the `replacement` it returned the same way as step 3. When there is none, stop.
   - `claim_lapsed`: another build held it and its claim ran out. If the holder's `branch` exists here, show its commits no remote has (`git log <branch> --not --remotes --oneline`), then ask the user whether to take it over. Only on yes, run `retain packet claim <name> --take-over` in the worktree; on no, remove the worktree and stop.
   - `not_buildable`: it is no longer ready to build; remove the worktree and run `retain packet next` again.
+  - `blocked`: a packet it builds on is not far enough along (the refusal's `dependencies`, each with its `reason`). Remove the worktree, say which and why, and run `retain packet next` again.
 
 ## 5. Build it
 

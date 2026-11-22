@@ -25,12 +25,13 @@ This may follow `/retain:explore` in the same conversation, or be the first step
 
 3. **Confirm the direction.** If the conversation has not settled one, ask the user which way to go. You may lay out the options you found, with their tradeoffs, but do not choose. Once there is a direction, state it back in one sentence and ask the user to confirm it. Write nothing until they do. That sentence opens the design's Decision section.
 
-4. **Confirm the name and the Thread.**
+4. **Confirm the name, the Thread and what it builds on.**
    - Propose a packet name: lowercase words joined by hyphens, short, naming the change. Ask the user to confirm or change it.
    - Run `retain packet status <name>` in the checkout. A packet of that name for this repository means the name is taken: say so and ask for another. A not-found answer means it is free.
    - If the conversation drew on a Thread this change advances, ask whether to link the design to it. When several could fit, name them and ask which. With no Thread, or a no, the packet has none. Never pick one silently.
+   - Ask whether the change builds on other packets of this repository: work that must land first, which this one stacks onto. List the candidates from `retain packet list --state handed-off --state planned --state building --state done` (name, title, state) and name any the conversation pointed to, such as a part one of the same feature. Ask which, if any; never add one the user did not choose. A dependency only needs a pull request to stack onto before this one is built, not to be finished.
 
-5. **Find the folder.** Run `retain packet root --json`. The packet's folder is `<root>/<repoSlug>/<name>` when it gives a `repoSlug`, otherwise `<root>/<name>`. Write the parts there, never in the repository. If writing there is refused, the assistant was started without access to it: stop and tell the user the flag to add when starting it, `--add-dir <root>` for Claude Code or Codex.
+5. **Find the folder.** Run `retain packet root`. The packet's folder is `<root>/<repoSlug>/<name>` when it gives a `repoSlug`, otherwise `<root>/<name>`. Write the parts there, never in the repository. If writing there is refused, the assistant was started without access to it: stop and tell the user the flag to add when starting it, `--add-dir <root>` for Claude Code or Codex.
 
 6. **Write the proposal, then the design.** For each part in that order:
    - Run `retain packet instructions <part>`. Follow its `instruction` and fill its `template`. For the design, read the proposal you wrote first.
@@ -40,12 +41,13 @@ This may follow `/retain:explore` in the same conversation, or be the first step
 
    What the design cites: in What exists, cite the code you read in this session by file path, and Retain sources by their title and date. Mark anything you did not read here as unverified. History the user's direction departs from goes in as context, not as an objection.
 
-7. **Create the packet.** Run `retain packet create <folder>`, adding `--thread <ref>` only when the user said yes to a Thread, and `--title <title>` when the user named one.
+7. **Create the packet.** Run `retain packet create <folder>`, adding `--thread <ref>` only when the user said yes to a Thread, `--depends-on <name>` for each packet the user said it builds on, and `--title <title>` when the user named one.
    - An `invalid_request` with issues means a part failed Retain's check: fix it as in step 6 and create again.
+   - An `unknown_dependency` refusal names a packet this repository does not have: show the user and ask again which it builds on.
    - A `name_taken` refusal means another packet of this repository has the name since you checked: ask for a new name, rename the folder, and create again.
    - Any other failure: say what the command returned and stop.
 
-8. **Report and offer apply.** Say the packet's name, state and folder exactly as `create` returned them, and that it is in Retain for the user to read. Offer `/retain:apply <name>` to write its requirements and tasks and build it, now or later from any checkout of this repository.
+8. **Report and offer apply.** Say the packet's name, state and folder exactly as `create` returned them, and the packets it builds on with whether each is ready (`packet.dependsOn`), and that it is in Retain for the user to read. Offer `/retain:apply <name>` to write its requirements and tasks and build it, now or later from any checkout of this repository.
 
 ## Reporting
 
