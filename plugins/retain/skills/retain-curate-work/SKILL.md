@@ -58,9 +58,9 @@ A packet the user did not answer for is Keep for this run, and is not recorded a
 
 Each decision on its own. Report what each command returned, and when one fails, say so and go on with the others.
 
-- **Archive**
-  - A `retain-packet/1` or `retain-packet/2` packet: `retain packet archive <id>`, with `--force` when tasks are unchecked, which records them as open in the snapshot. It needs the packet pulled on this computer. If it is not, `retain packet pull <id>` first, then archive.
-  - An `openspec/1` packet: `openspec archive <name> --yes` in the checkout, then `retain sync`, which archives the packet in Retain. Say the repository now has the archived change to commit. Never commit it for the user.
+- **Archive:** Retain holds the archive state, whatever the repository's openspec folders say, so archive in Retain first, for every format: `retain packet archive <id>` in the checkout, with `--force` when tasks are unchecked, which records them as open in the snapshot. It needs no local copy.
+  - Then, for an `openspec/1` packet, tidy the repository: `openspec archive <name> --yes` in the checkout. Say the repository now has the archived change to commit. Never commit it for the user.
+  - When `openspec archive` refuses (a spec delta that no longer matches its spec), the packet is still archived in Retain and the repository is unchanged: show its message, and ask whether to fix the delta or archive with `--skip-specs`, which leaves the specs as they are.
 - **Drop:** `retain packet drop <id> --reason "<the reason>"`. For an imported change it deletes `openspec/changes/<name>` too, and refuses while that folder has uncommitted changes; show the files it names and leave it. Say the deletion is the user's to commit. Say that `retain packet restore <id>` brings a dropped packet back.
 - **Finish:** change nothing. List `/retain:apply <name>` for each, to run one at a time, each in its own session or worktree.
 - **Keep:** change nothing in Retain. Record it as kept (below).
